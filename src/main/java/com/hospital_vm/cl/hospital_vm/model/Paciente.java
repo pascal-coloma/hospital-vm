@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "paciente")
@@ -32,6 +35,10 @@ public class Paciente {
 
     @Column(nullable = false)
     private String correo;
+
+    @OneToMany(mappedBy = "paciente")
+    @JsonIgnoreProperties("paciente")
+    private List<Atencion> atenciones;
 
     
 
